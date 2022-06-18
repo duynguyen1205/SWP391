@@ -9,31 +9,21 @@ package dtos;
  *
  * @author Trong Duy
  */
-public class UserDTO {
+public class UserError {
     private String userID;
-    private String userName;
-    private String roleID;
     private String email;
     private String phone;
-    private String password;
 
-    public UserDTO() {
+    public UserError() {
         this.userID = "";
-        this.userName = "";
-        this.roleID = "";
         this.email = "";
         this.phone = "";
-        this.password = "";
     }
-    
-    
-    public UserDTO(String userID, String userName, String roleID, String gmail, String phone, String password) {
+
+    public UserError(String userID, String gmail, String phone) {
         this.userID = userID;
-        this.userName = userName;
-        this.roleID = roleID;
         this.email = gmail;
         this.phone = phone;
-        this.password = password;
     }
 
     public String getUserID() {
@@ -42,22 +32,6 @@ public class UserDTO {
 
     public void setUserID(String userID) {
         this.userID = userID;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getRoleID() {
-        return roleID;
-    }
-
-    public void setRoleID(String roleID) {
-        this.roleID = roleID;
     }
 
     public String getEmail() {
@@ -76,12 +50,5 @@ public class UserDTO {
         this.phone = phone;
     }
     
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
 }
