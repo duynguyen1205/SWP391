@@ -55,33 +55,35 @@
                             userError = new UserError();
                         }
                     %>
+
                     <form action="MainController" class="signup" id="formSWP" method="post">
                         <div class="field">
-                            <input type="text" name="userID" id="userID" placeholder="Tên tài khoản" >
+                            <input type="text" name="userID" id="userID" placeholder="Tên tài khoản" required>
                             <span class="form-message"></span>
-                            <%= userError.getUserID()%></br>
+                            <p style="color: red"><%= userError.getUserID()%></p>
+
                         </div>
                         <div class="field">
-                            <input type="text" name="email" id="email" placeholder="Email Address" >
+                            <input type="text" name="email" id="email" placeholder="Email Address" required>
                             <span class="form-message"></span>
-                            <%= userError.getEmail()%></br>
+                            <p style="color: red"> <%= userError.getEmail()%></p>
                         </div>
                         <div class="field">
-                            <input type="text" name="phone" id="phone" placeholder="Phone" >
+                            <input type="text" name="phone" id="phone" placeholder="Phone" required>
                             <span class="form-message"></span>
-                            <%= userError.getPhone()%></br>
+                            <p style="color: red"><%= userError.getPhone()%></p>
                         </div>
                         <div class="field">
-                            <input type="password" name="password" id="password" placeholder="Password" >
+                            <input type="password" name="password" id="password" placeholder="Password" required>
                             <span class="form-message"></span>
                         </div>
                         <div class="field">
-                            <input type="password" id="password_confirm" placeholder="Confirm password" >
+                            <input type="password" id="password_confirm" placeholder="Confirm password" required>
                             <span class="form-message"></span>
                         </div>
                         <div class="field btn">
                             <div class="btn-layer"></div>
-                            <input type="submit" name="action" value="SignUp">
+                            <input type="submit" name="action" value="Signup">
                         </div>
                     </form>
                 </div>
@@ -98,13 +100,9 @@
                     errorSelector: '.form-message',
                     rules: [
                         Validator.isRequired('#userID', 'Vui lòng nhập lại Tên tài khoản'),
-                        Validator.isRequired('#email'),
                         Validator.isEmail('#email', 'Email chưa chính xác'),
-                        Validator.isRequired('#password'),
                         Validator.minLength('#password', 6, 'Nhập vào tối thiểu 6 ký tự'),
-                        Validator.isRequired('#phone'),
                         Validator.isPhone('#phone', 'vui lòng nhập lại số điện thoại'),
-                        Validator.isRequired('#password_confirm'),
                         Validator.isConfirmed('#password_confirm', function () {
                             return document.querySelector('#formSWP #password').value;
                         }, 'Mật khẩu nhập lại không chính xác')

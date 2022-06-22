@@ -49,26 +49,26 @@ function Validator(options) {
     }
     // lấy element của form cần để validate 
     var formElement = document.querySelector(options.form);
-    if(formElement) {
-        //khi submit form
-        formElement.onsubmit = function(e) {
-            e.preventDefault(); // không cho submit form
-            var isFormValid = true 
-            // lập qua các rule và check tất cả 
-            options.rules.forEach(function (rule) {
-                var inputElement = formElement.querySelector(rule.selector);
-                var isValid = validate(inputElement, rule);
-                if(!isValid) {
-                    isFormValid = false;
-                }
-            });
-
-            // nếu mọi thứ ok thì cho submit
-            if(isFormValid) {
-                formElement.submit();
-            } 
-        }
-    }
+//    if(formElement) {
+//        //khi submit form
+//        formElement.onsubmit = function(e) {
+//            e.preventDefault(); // không cho submit form
+//            var isFormValid = true 
+//            // lập qua các rule và check tất cả 
+//            options.rules.forEach(function (rule) {
+//                var inputElement = formElement.querySelector(rule.selector);
+//                var isValid = validate(inputElement, rule);
+//                if(!isValid) {
+//                    isFormValid = false;
+//                }
+//            });
+//
+//            // nếu mọi thứ ok thì cho submit
+//            if(isFormValid) {
+//                formElement.submit();
+//            } 
+//        }
+//    }
     
     //xử lý lập qua mỗi rule
     if(formElement){
@@ -146,4 +146,3 @@ Validator.isConfirmed = function(selector, getConfirmValue, message) {
         }
     };
 }
-
