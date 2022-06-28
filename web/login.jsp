@@ -30,10 +30,10 @@
                 <div class="form-inner">
                     <form action="MainController" class="login" method="post">
                         <div class="field">
-                            <input type="text" name="userID" placeholder="Email Address" required>
+                            <input type="text" name="userID" placeholder="Tên tài khoản" required>
                         </div>
                         <div class="field">
-                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Mật khẩu" required>
                         </div>
                         <div class="pass-link"><a href="#">Forgot password?</a></div>
                         <div class="field btn">
@@ -60,18 +60,18 @@
                         <div class="field">
                             <input type="text" name="userID" id="userID" placeholder="Tên tài khoản" required>
                             <span class="form-message"></span>
-                            <p style="color: red"><%= userError.getUserID()%></p>
+                            <p><%= userError.getUserID()%></p>
 
                         </div>
                         <div class="field">
                             <input type="text" name="email" id="email" placeholder="Email Address" required>
                             <span class="form-message"></span>
-                            <p style="color: red"> <%= userError.getEmail()%></p>
+                            <p> <%= userError.getEmail()%></p>
                         </div>
                         <div class="field">
                             <input type="text" name="phone" id="phone" placeholder="Phone" required>
                             <span class="form-message"></span>
-                            <p style="color: red"><%= userError.getPhone()%></p>
+                            <p><%= userError.getPhone()%></p>
                         </div>
                         <div class="field">
                             <input type="password" name="password" id="password" placeholder="Password" required>

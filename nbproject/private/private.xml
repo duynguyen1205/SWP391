@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/web/index.jsp</file>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/Controller/MainController1.java</file>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/web/js/scripts.js</file>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/Controller/SignUpController.java</file>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/web/login.jsp</file>
-            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/Controller/MainController.java</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/web/changePassword.jsp</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/daos/UserDao.java</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/Controller/ChangeUserPassController.java</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/Controller/EditUserController.java</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/src/java/dtos/UserDTO.java</file>
+            <file>file:/D:/FPT/SE-KY5/SWP391/Code/SWP391/web/userProfile.jsp</file>
         </group>
     </open-files>
 </project-private>

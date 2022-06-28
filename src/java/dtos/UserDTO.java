@@ -27,11 +27,11 @@ public class UserDTO {
     }
     
     
-    public UserDTO(String userID, String userName, String roleID, String gmail, String phone, String password) {
+    public UserDTO(String userID, String userName, String roleID, String email, String phone, String password) {
         this.userID = userID;
         this.userName = userName;
         this.roleID = roleID;
-        this.email = gmail;
+        this.email = email;
         this.phone = phone;
         this.password = password;
     }

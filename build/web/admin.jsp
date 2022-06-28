@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin
-    Created on : Jun 10, 2022, 12:01:38 PM
-    Author     : Trong Duy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

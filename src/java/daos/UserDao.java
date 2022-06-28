@@ -23,7 +23,9 @@ public class UserDao {
     private static final String CHECK_DUPLICATE_USERID = "SELECT Email, Phone FORM UserTable WHERE UserID=? AND status='true'";
     private static final String CHECK_DUPLICATE = "SELECT Email, Phone FORM UserTable WHERE UserID=? AND status='true'";
     private static final String CREATE = "INSERT INTO UserTable(UserID, RoleID, UserName, UserPassword, Phone, Email, Address, Status) \n" +
-"VALUES(?, 'US', null, ?, ?, ?, null, 1)";
+"VALUES(?, 'US', 'none', ?, ?, ?, null, 1)";
+    private static final String UPDATE = "UPDATE UserTable SET UserName=?, Phone=?, Email=? WHERE UserID=?";
+    private static final String CHAHGE_PASS = "UPDATE UserTable SET UserPassword=? WHERE UserID=?";
     public UserDTO checkLogin(String userID, String password) throws SQLException {
         UserDTO user = null;
         Connection conn = null;
@@ -41,7 +43,7 @@ public class UserDao {
                     String roleID = rs.getString("RoleID");
                     String email = rs.getString("Email");
                     String phone = rs.getString("Phone");
-                    user = new UserDTO(userID, fullName, roleID, email, phone, "*****");
+                    user = new UserDTO(userID, fullName, roleID, email, phone, password);
                 }
             }
         } catch (Exception e) {
@@ -74,7 +76,6 @@ public class UserDao {
                 if (rs.next()) {
                     check = true;
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,4 +162,56 @@ public class UserDao {
         return check;
 
      }
+    public boolean updateUser(String userID, String fullName, String email, String phone) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if(conn!=null) {
+                ptm=conn.prepareStatement(UPDATE);
+                ptm.setString(1, fullName);
+                ptm.setString(2, phone);
+                ptm.setString(3, email);
+                ptm.setString(4, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    public boolean updatePass(String userID, String newPass) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if(conn!=null) {
+                ptm=conn.prepareStatement(CHAHGE_PASS);
+                ptm.setString(1, newPass);
+                ptm.setString(2, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
 }

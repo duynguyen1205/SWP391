@@ -5,50 +5,42 @@
  */
 package Controller;
 
+import daos.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Trong Duy
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "ChangeUserPassController", urlPatterns = {"/ChangeUserPassController"})
+public class ChangeUserPassController extends HttpServlet {
+    private static final String ERROR = "changePassword.jsp";
+    private static final String SUCCESS = "changePassword.jsp";
 
-    private static final String ERROR = "error.jsp";
-    private static final String LOGIN = "Login";
-    private static final String LOGIN_CONTROLLER = "LoginController";
-    private static final String LOGOUT = "Logout";
-    private static final String LOGOUT_CONTROLLER = "LogoutController";
-    private static final String SIGNUP = "Signup";
-    private static final String SIGNUP_CONTROLLER = "SignUpController";
-    private static final String EDIT ="Edit";
-    private static final String EDIT_CONTROLLER = "EditUserController";
-    private static final String CHANGE_USER_PASS ="ChangePass";
-    private static final String CHANGE_USER_PASS_CONTROLLER = "ChangeUserPassController";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+       String url = ERROR;
+       HttpSession session = request.getSession();
         try {
-            String action = request.getParameter("action");
-            if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            } else if (LOGOUT.equals(action)) {
-                url = LOGOUT_CONTROLLER;
-            } else if (SIGNUP.equals(action)) {
-                url = SIGNUP_CONTROLLER;
-            } else if (EDIT.equals(action)) {
-                url = EDIT_CONTROLLER;
-            } else if (CHANGE_USER_PASS.equals(action)) {
-                url = CHANGE_USER_PASS_CONTROLLER;
-            } 
+            String userID = request.getParameter("userID");
+            String newPass = request.getParameter("newPass");
+            UserDao dao = new UserDao();
+            boolean checkChange = dao.updatePass(userID, newPass);
+            if(checkChange) {
+                url=SUCCESS;
+                session.setAttribute("CHANGE_SUCCESS","Đổi mật khẩu thành công");
+            }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
-        } finally {
+            log("Error at ChangeUserPassController " + e.toString());
+        } finally{
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
